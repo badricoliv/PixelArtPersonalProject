@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Grid, ServerStyleSheets, StylesProvider } from '@material-ui/core';
-import { AlertManager, useAlert } from 'react-alert'
-
 
 const Home = () => {
     var text : Number = 1
     const [origColor,setNewColor] = useState('#000000')
-    const [count, setCount] = useState(0); //This is a hook, allowing for dynamic changes to the display
-    const gridColors = ['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
-    '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+    const [count, setCount] = useState(1); //This is a hook, allowing for dynamic changes to the display
+
+    const colorSelection = ['#FFFFFF','#000000','#FF0000','#FFF000','#0001FC','#999999']
+    const gridColors = ['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+                        '#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
                     ]
     
     return (
@@ -26,20 +31,21 @@ const Home = () => {
                 {gridColors.map((squareColor) => {
                     const [color,setColor] = useState(squareColor)
                     return (
-                        <TouchableOpacity onPress={()=>{setColor(origColor)}}>
+                        <TouchableOpacity activeOpacity={1} onPress={()=>{setColor(origColor)}}>
                             <View style={[styles.square,{backgroundColor:(color)},{borderWidth:count}]}></View>
                         </TouchableOpacity>
                     )
                 })}
             </View>
-            <TouchableOpacity onPress={()=>{setNewColor('#FFFFFF')}}>White</TouchableOpacity>
-            <TouchableOpacity onPress={()=>{setNewColor('#000000')}}>Black</TouchableOpacity>
-            <TouchableOpacity onPress={()=>{setNewColor('#ff0000')}}>Red</TouchableOpacity>
-            <TouchableOpacity onPress={()=>{setNewColor('#999999')}}>Grey</TouchableOpacity>
+            <Text>Color Selection</Text>
+            {colorSelection.map((colorSelec) => {
+                return (
+                    <TouchableOpacity style={[styles.button,{backgroundColor:colorSelec}]} onPress={()=>{setNewColor(colorSelec)}}></TouchableOpacity>
+                )
+            })}
 
-
-            <TouchableOpacity onPress={()=>{setCount(1)}}>Grid</TouchableOpacity>
-            <TouchableOpacity onPress={()=>{setCount(0)}}>No Grid</TouchableOpacity>
+            <TouchableOpacity style={[styles.button,{backgroundColor:'#999999'}]} onPress={()=>{setCount(1)}}>Grid</TouchableOpacity>
+            <TouchableOpacity style={[styles.button,{backgroundColor:'#999999'}]} onPress={()=>{setCount(0)}}>No Grid</TouchableOpacity>
 
         </View>
     );
@@ -49,11 +55,10 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-
         justifyContent: 'center',
     },
     grid: {
-        width: 502,
+        width: 402,
         height:500,
       flex: 1,
       flexDirection: 'row',
@@ -61,10 +66,16 @@ const styles = StyleSheet.create({
       padding: 0,
       borderWidth:1
     },
+    button: {
+        alignItems: "center",
+        padding: 10,
+        borderWidth:1,
+        borderColor:'#000000'
+    },
     square: {
         margin: 0,
-        width: 50,
-        height: 50,
+        width: 25,
+        height: 25,
     }
   });
 
