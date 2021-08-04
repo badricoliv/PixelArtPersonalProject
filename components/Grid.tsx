@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
 import Rows from "./Rows"
 interface gridProps {
     pixelColor:string
