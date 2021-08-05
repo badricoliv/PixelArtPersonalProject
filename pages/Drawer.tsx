@@ -67,10 +67,12 @@ export default function Drawer (props:drawerProps) {
                 <TouchableOpacity onPress={borderOff}>Grid Lines Off</TouchableOpacity>
                 <HexColorPicker color={origColor} onChange={setNewColor} />
                 <HexColorInput color={origColor} onChange={setNewColor} />
+                <Text>Width</Text>
                 <TextInput
                     onChangeText={setWidth}
                     onSubmitEditing={widthStringToNo}
                     value={width} />
+                <Text>Height</Text>
                 <TextInput
                     onChangeText={setHeight}
                     onSubmitEditing={heightStringToNo}

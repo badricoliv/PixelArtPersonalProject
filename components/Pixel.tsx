@@ -17,6 +17,8 @@ export default function Pixel(props:gridProps) {
     }
     function changeColor(colorParam:string) {
         setColor(colorParam)
+        
+        
     }
     return (
         <div

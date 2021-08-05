@@ -7,3 +7,13 @@
   .item {
       margin: 0 10px
   }
+  #options {
+      display:flex;
+      flex-direction:column;
+  }
+
+  #grid {
+      border-style: solid;
+      border-color: black;
+  }
+
