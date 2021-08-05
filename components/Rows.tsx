@@ -7,6 +7,7 @@ interface gridProps {
     pixelBorder:string
     gridHeight:number
     pixelSize:string
+    fill:boolean
 
 }
 
@@ -17,7 +18,7 @@ export default function Rows (props:gridProps) {
     var pixels = []
 
     for(var i:number = 0; i < height; i++) {
-        pixels.push(<Pixel pixelColor={color} pixelBorder={border} pixelSize={props.pixelSize}/>)
+        pixels.push(<Pixel pixelColor={color} pixelBorder={border} pixelSize={props.pixelSize}fill = {props.fill}/>)
     }
     return (
         <div id='rows'>

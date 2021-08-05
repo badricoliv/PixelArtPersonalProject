@@ -1,5 +1,9 @@
-.home {
+#home {
     display: flex;
     flex-direction: row;
+    margin: 0 -10px;
     align-items: center;
+  }
+  .item {
+      margin: 0 10px
   }

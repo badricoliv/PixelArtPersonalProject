@@ -5,13 +5,16 @@ interface gridProps {
     pixelColor:string
     pixelBorder:string
     pixelSize:string
+    fill:boolean
 
 }
 
 export default function Pixel(props:gridProps) {
     var pixelColor:string = props.pixelColor
     const [color,setColor] = useState('#FFFFFF')
-
+    if(props.fill) {
+        setColor(pixelColor)
+    }
     function changeColor(colorParam:string) {
         setColor(colorParam)
     }

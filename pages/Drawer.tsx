@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Text, TouchableOpacity, TextInput} from 'react-native';
 import Grid from '../components/Grid';
-import "../styles/home.scss";
+import "../styles/drawer.css";
 import { HexColorPicker, HexColorInput} from "react-colorful";
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
@@ -19,6 +19,8 @@ export default function Drawer (props:drawerProps) {
     const [widthNo, setWidthNo] = useState(20)
     const [height, setHeight] = useState("20")
     const [heightNo,setHeightNo] = useState(20)
+
+    const [fill, setFill] = useState(false)
     function borderOff() {
         setBorder('0px solid #999999')
         setSize('22px')
@@ -42,11 +44,11 @@ export default function Drawer (props:drawerProps) {
     }
     function heightStringToNo() {
         const no = Number(height)
-        if(no > 0 && no <= 40) {
+        if(no > 0 && no <= 32) {
             setHeightNo(no)
-        } else if(no > 40) {
-            setHeightNo(40)
-            setHeight("40")
+        } else if(no > 32) {
+            setHeightNo(32)
+            setHeight("32")
         } else {
             setHeightNo(1)
             setHeight('1')
@@ -56,20 +58,25 @@ export default function Drawer (props:drawerProps) {
 
     const pixSize = Math.sqrt(256)
     return (
-        <div id='home' style={{alignItems:'center',backgroundColor:'#BBBBBB'}}>
-            <Grid pixelColor={origColor} pixelBorder={border} gridWidth= {widthNo} gridHeight={heightNo} pixelSize={size}/>
-            <TouchableOpacity onPress={borderOn}>Grid Lines On</TouchableOpacity>
-            <TouchableOpacity onPress={borderOff}>Grid Lines Off</TouchableOpacity>
-            <HexColorPicker color={origColor} onChange={setNewColor}/>
-            <HexColorInput color= {origColor} onChange={setNewColor}/>
-            <TextInput
-            onChangeText={setWidth}
-            onSubmitEditing={widthStringToNo}
-            value={width}/>
-            <TextInput
-            onChangeText={setHeight}
-            onSubmitEditing={heightStringToNo}
-            value={height}/>
+        <div id='home'>
+            <div className ='item' id='grid'>
+                <Grid pixelColor={origColor} pixelBorder={border} gridWidth= {widthNo} gridHeight={heightNo} pixelSize={size}fill={fill}/>
+            </div>
+            <div className = 'item' id = 'options'>
+                <TouchableOpacity onPress={borderOn}>Grid Lines On</TouchableOpacity>
+                <TouchableOpacity onPress={borderOff}>Grid Lines Off</TouchableOpacity>
+                <HexColorPicker color={origColor} onChange={setNewColor} />
+                <HexColorInput color={origColor} onChange={setNewColor} />
+                <TextInput
+                    onChangeText={setWidth}
+                    onSubmitEditing={widthStringToNo}
+                    value={width} />
+                <TextInput
+                    onChangeText={setHeight}
+                    onSubmitEditing={heightStringToNo}
+                    value={height} />
+            </div>
+
         </div>
     );
 }

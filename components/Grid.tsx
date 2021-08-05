@@ -6,6 +6,7 @@ interface gridProps {
     gridWidth:number
     gridHeight:number
     pixelSize:string
+    fill:boolean
 }
 export default function Grid (props:gridProps) {
 
@@ -16,7 +17,7 @@ export default function Grid (props:gridProps) {
     var rows = []
     var ref = React.createRef
     for(var i:number = 0; i < width; i++) {
-        rows.push(<Rows pixelColor={color} pixelBorder={border} gridHeight={height} pixelSize={props.pixelSize}/>)
+        rows.push(<Rows pixelColor={color} pixelBorder={border} gridHeight={height} pixelSize={props.pixelSize} fill={props.fill}/>)
     }
     return (
         <div ref={ref} id='Grid' style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
