@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Rows from "./Rows"
 interface gridProps {
     pixelColor:string
@@ -8,6 +8,13 @@ interface gridProps {
     pixelSize:string
     fill:boolean
 }
+/**
+ * The grid component is an array of row components
+ * @param props - passes in the pixelColor (for use when a pixel is clicked), the pixel border size,
+ *                the grid width and height, the pixel size and whether it is filling all pixels or not
+ *                (future feature)
+ * @returns - an array of Rows components
+ */
 export default function Grid (props:gridProps) {
 
     var color = props.pixelColor

@@ -3,15 +3,14 @@ import {Text, TouchableOpacity, TextInput} from 'react-native';
 import Grid from '../components/Grid';
 import "../styles/drawer.css";
 import { HexColorPicker, HexColorInput} from "react-colorful";
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
-interface drawerProps {
-    width:number
-    height:number
-}
-export default function Drawer (props:drawerProps) {
+/**
+ * Main page of the application. Gets the grid from the Grid component. Has buttons to toggle the grid
+ * lines on and off (the size of the squares has to be increased slightly when the grid lines are
+ * toggled off). Also uses the HexColorPicker and HexColorInput to change the colour.
+ */
+export default function Drawer () {
 
-    
     const [origColor,setNewColor] = useState('#000000')
     const [border, setBorder] = useState('1px solid #999999');
     const [size, setSize] = useState('20px')
@@ -56,14 +55,13 @@ export default function Drawer (props:drawerProps) {
         
     }
 
-    const pixSize = Math.sqrt(256)
     return (
         <div id='home'>
             <div className ='item' id='grid'>
                 <Grid pixelColor={origColor} pixelBorder={border} gridWidth= {widthNo} gridHeight={heightNo} pixelSize={size}fill={fill}/>
             </div>
             <div className = 'item' id = 'options'>
-                <TouchableOpacity onPress={borderOn}>Grid Lines On</TouchableOpacity>
+                <TouchableOpacity onPress={borderOn} style={{borderStyle:'solid', borderColor:'black'}}>Grid Lines On</TouchableOpacity>
                 <TouchableOpacity onPress={borderOff}>Grid Lines Off</TouchableOpacity>
                 <HexColorPicker color={origColor} onChange={setNewColor} />
                 <HexColorInput color={origColor} onChange={setNewColor} />

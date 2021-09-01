@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import Grid from '../components/Grid';
-import "../styles/home.scss";
 import {SketchPicker,CirclePicker} from 'react-color'
 import { HexColorPicker, HexColorInput} from "react-colorful";
 import { useHistory } from 'react-router-dom';
