@@ -1,7 +1,8 @@
 import React from 'react';
 import Rows from "./Rows"
 interface gridProps {
-    pixelColor:string
+    pixelColorLeft:string
+    pixelColorRight:string
     pixelBorder:string
     gridWidth:number
     gridHeight:number
@@ -17,14 +18,15 @@ interface gridProps {
  */
 export default function Grid (props:gridProps) {
 
-    var color = props.pixelColor
+    var colorLeft = props.pixelColorLeft
+    var colorRight = props.pixelColorRight
     var border = props.pixelBorder
     var width = props.gridWidth
     var height = props.gridHeight
     var rows = []
     var ref = React.createRef
     for(var i:number = 0; i < width; i++) {
-        rows.push(<Rows pixelColor={color} pixelBorder={border} gridHeight={height} pixelSize={props.pixelSize} fill={props.fill}/>)
+        rows.push(<Rows pixelColorLeft={colorLeft} pixelColorRight={colorRight} pixelBorder={border} gridHeight={height} pixelSize={props.pixelSize} fill={props.fill}/>)
     }
     return (
         <div ref={ref} id='Grid' style={{display:'flex',flexDirection:'row',alignItems:'center'}}>

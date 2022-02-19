@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Pixel from "./Pixel"
 
 interface gridProps {
-    pixelColor:string
+    pixelColorLeft:string
+    pixelColorRight:string
     pixelBorder:string
     gridHeight:number
     pixelSize:string
@@ -18,13 +19,14 @@ interface gridProps {
  * @returns - an array of Pixel components
  */
 export default function Rows (props:gridProps) {
-    var color:string = props.pixelColor
+    var colorLeft:string = props.pixelColorLeft
+    var colorRight:string = props.pixelColorRight
     var border:string = props.pixelBorder
     var height:number = props.gridHeight
     var pixels = []
 
     for(var i:number = 0; i < height; i++) {
-        pixels.push(<Pixel pixelColor={color} pixelBorder={border} pixelSize={props.pixelSize}fill = {props.fill}/>)
+        pixels.push(<Pixel pixelColorLeft={colorLeft} pixelColorRight={colorRight} pixelBorder={border} pixelSize={props.pixelSize}fill = {props.fill}/>)
     }
     return (
         <div id='rows'>

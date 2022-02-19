@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 interface gridProps {
-    pixelColor:string
+    pixelColorLeft:string
+    pixelColorRight:string
     pixelBorder:string
     pixelSize:string
     fill:boolean
@@ -16,20 +17,27 @@ interface gridProps {
  * @returns - a clickable square
  */
 export default function Pixel(props:gridProps) {
-    var pixelColor:string = props.pixelColor
-    const [color,setColor] = useState('#FFFFFF')
+    var pixelColorLeft:string = props.pixelColorLeft
+    var pixelColorRight:string = props.pixelColorRight
+    const [color,setColor] = useState(pixelColorLeft)
+
     if(props.fill) {
-        setColor(pixelColor)
+        setColor(pixelColorLeft)
     }
     function changeColor(colorParam:string) {
         setColor(colorParam)
-        
-        
     }
+
+    //makes it so right clicking doesn't show menu
+    oncontextmenu = function(e) {
+        e.preventDefault();
+    }
+    
     return (
         <div
             className='pixel'
-            onClick={() => changeColor(pixelColor)}
+            onAuxClick={() => changeColor(pixelColorRight)}
+            onClick={() => changeColor(pixelColorLeft)}
             style={{backgroundColor:color,
                 width:props.pixelSize,
                 height:props.pixelSize,

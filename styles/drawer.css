@@ -1,24 +1,40 @@
 #home {
     display: flex;
-    flex-direction: row;
-    margin: 0 -10px;
+    flex-direction: column;
     align-items: center;
-  }
-  .item {
-      margin: 0 10px
   }
   #options {
       display:flex;
       flex-direction:column;
   }
-
+  #border {
+    display:flex;
+    flex-direction:column;
+  }
+  #color {
+    display:flex;
+    flex-direction:column;
+  }
+  #size {
+    display:flex;
+    flex-direction:column;
+  }
   #grid {
       border-style: solid;
       border-color: black;
+      position: relative;
+      top:15%;
   }
 
-  #TouchableOpacity {
+  Button.button {
     border-style: solid;
-    border-color: black;
+    border-color: blue;
+    border-width: 1;
+    background-color: rgb(143, 155, 172);
+  }
+
+  #HexColorPicker {
+      border-style: solid;
+      border-color: green;
   }
 
